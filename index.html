@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <audio autoplay loop>
+  <audio id="bgm" loop>
     <source src="song.mp3" type="audio/mpeg">
   </audio>
   <div id="flashbang"
@@ -193,6 +193,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/MotionPathPlugin.min.js"></script>
   <script src="script.js"></script>
+  <script> window.addEventListener("load", () => { const music = document.getElementById("bgm"); 
+                                                  music.play().catch(err => {
+        console.log("Autoplay diblokir browser:", err);
+    });
+});
+</script>
 </body>
 
 </html>
