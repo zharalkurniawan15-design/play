@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Play Time!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500&family=Caveat:wght@500;700&display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <audio id="bg-music" loop>
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
+  <div id="flashbang"
+    style="position: fixed; inset: 0; background: #ffffff; opacity: 0; pointer-events: none; z-index: 10000;"></div>
+
+  <div id="loadingScreen">
+    <div class="loading-flower-wrap">
+      <img src="flowers1.png" class="loading-flower" alt="Flower">
+      <div class="particle-orbit orbit-inner">
+        <img src="partikel1.png" class="particle p1">
+        <img src="partikel2.png" class="particle p2">
+        <img src="partikel1.png" class="particle p3">
+        <img src="partikel2.png" class="particle p4">
+      </div>
+      <div class="particle-orbit orbit-outer">
+        <img src="partikel1.png" class="particle p5">
+        <img src="partikel2.png" class="particle p6">
+        <img src="partikel1.png" class="particle p7">
+        <img src="partikel2.png" class="particle p8">
+      </div>
+    </div>
+    <p class="loading-text">Menyiapkan kenangan untuk kamu...</p>
+    <div class="loading-bar">
+      <div class="loading-progress"></div>
+    </div>
+    <span id="loadingPercent">0%</span>
+  </div>
+
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <radialGradient id="centerGrad" cx="35%" cy="30%" r="75%">
+        <stop offset="0%" stop-color="#A6722F" />
+        <stop offset="100%" stop-color="#5E3A1B" />
+      </radialGradient>
+      <pattern id="seedPattern" width="9" height="9" patternUnits="userSpaceOnUse">
+        <circle cx="4.5" cy="4.5" r="1.3" fill="#3B2415" opacity=".55" />
+      </pattern>
+      <path id="petalShape" d="M100,100 C86,76 82,34 100,6 C118,34 114,76 100,100 Z" fill="currentColor" />
+
+      <symbol id="sunflower-icon" viewBox="0 0 200 200">
+        <g>
+          <use href="#petalShape" class="petal-a" transform="rotate(0 100 100)" />
+          <use href="#petalShape" class="petal-b" transform="rotate(30 100 100)" />
+          <use href="#petalShape" class="petal-a" transform="rotate(60 100 100)" />
+          <use href="#petalShape" class="petal-b" transform="rotate(90 100 100)" />
+          <use href="#petalShape" class="petal-a" transform="rotate(120 100 100)" />
+          <use href="#petalShape" class="petal-b" transform="rotate(150 100 100)" />
+          <use href="#petalShape" class="petal-a" transform="rotate(180 100 100)" />
+          <use href="#petalShape" class="petal-b" transform="rotate(210 100 100)" />
+          <use href="#petalShape" class="petal-a" transform="rotate(240 100 100)" />
+          <use href="#petalShape" class="petal-b" transform="rotate(270 100 100)" />
+          <use href="#petalShape" class="petal-a" transform="rotate(300 100 100)" />
+          <use href="#petalShape" class="petal-b" transform="rotate(330 100 100)" />
+        </g>
+        <circle cx="100" cy="100" r="27" fill="url(#centerGrad)" />
+        <circle cx="100" cy="100" r="27" fill="url(#seedPattern)" />
+      </symbol>
+
+      <radialGradient id="centerGradDaisy" cx="35%" cy="30%" r="75%">
+        <stop offset="0%" stop-color="#FBDB6B" />
+        <stop offset="100%" stop-color="#E0A322" />
+      </radialGradient>
+      <pattern id="seedPatternDaisy" width="7" height="7" patternUnits="userSpaceOnUse">
+        <circle cx="3.5" cy="3.5" r="1.1" fill="#8A5A14" opacity=".5" />
+      </pattern>
+      <path id="petalShapeWide" d="M100,100 C76,90 62,52 100,12 C138,52 124,90 100,100 Z" fill="currentColor" />
+
+      <symbol id="daisy-icon" viewBox="0 0 200 200">
+        <g>
+          <use href="#petalShapeWide" class="petal-c" transform="rotate(0 100 100)" />
+          <use href="#petalShapeWide" class="petal-d" transform="rotate(22.5 100 100)" />
+          <use href="#petalShapeWide" class="petal-c" transform="rotate(45 100 100)" />
+          <use href="#petalShapeWide" class="petal-d" transform="rotate(67.5 100 100)" />
+          <use href="#petalShapeWide" class="petal-c" transform="rotate(90 100 100)" />
+          <use href="#petalShapeWide" class="petal-d" transform="rotate(112.5 100 100)" />
+          <use href="#petalShapeWide" class="petal-c" transform="rotate(135 100 100)" />
+          <use href="#petalShapeWide" class="petal-d" transform="rotate(157.5 100 100)" />
+          <use href="#petalShapeWide" class="petal-c" transform="rotate(180 100 100)" />
+          <use href="#petalShapeWide" class="petal-d" transform="rotate(202.5 100 100)" />
+          <use href="#petalShapeWide" class="petal-c" transform="rotate(225 100 100)" />
+          <use href="#petalShapeWide" class="petal-d" transform="rotate(247.5 100 100)" />
+          <use href="#petalShapeWide" class="petal-c" transform="rotate(270 100 100)" />
+          <use href="#petalShapeWide" class="petal-d" transform="rotate(292.5 100 100)" />
+          <use href="#petalShapeWide" class="petal-c" transform="rotate(315 100 100)" />
+          <use href="#petalShapeWide" class="petal-d" transform="rotate(337.5 100 100)" />
+        </g>
+        <circle cx="100" cy="100" r="30" fill="url(#centerGradDaisy)" />
+        <circle cx="100" cy="100" r="30" fill="url(#seedPatternDaisy)" />
+      </symbol>
+    </defs>
+  </svg>
+
+
+  <svg class="ambient-flower a">
+    <use href="#sunflower-icon" />
+  </svg>
+  <svg class="ambient-flower b">
+    <use href="#sunflower-icon" />
+  </svg>
+  <svg class="ambient-flower c">
+    <use href="#sunflower-icon" />
+  </svg>
+
+  <div id="petalLayer"></div>
+
+  <div class="app-shell">
+    <section id="screen-cover" class="screen active">
+      <p class="eyebrow" id="planningEyebrow"></p>
+      <div class="book">
+        <div class="book-page">
+          <div class="divider"></div>
+          <p class="book-quote" id="bookQuote"></p>
+          <div class="divider"></div>
+        </div>
+        <div class="book-cover" id="bookCover">
+          <img src="flowers1.png" class="cover-flower-deco" alt="Flower Decoration">
+          <p class="cover-label">For</p>
+          <h1 class="cover-name" id="coverName"></h1>
+          <img src="flowers1.png" class="cover-seal" alt="Flower Seal">
+          <p class="cover-desc" id="coverDesc"></p>
+        </div>
+      </div>
+      <button class="btn-gold" id="btnOpenBook">📖 Buka pelan-pelan</button>
+      <div class="start-next" id="startNextWrap">
+        <button class="btn-outline" id="btnMulai">Mulai lihat rencana →</button>
+      </div>
+    </section>
+
+    <section id="screen-steps" class="screen">
+      <p class="eyebrow" id="stepEyebrow"></p>
+      <div class="step-card">
+        <div class="step-tab"></div>
+        <p class="step-note" id="stepNote"></p>
+        <hr class="step-divider">
+        <div class="step-meta">
+          <span class="pin">📍</span>
+          <div>
+            <p class="step-time" id="stepTime"></p>
+            <p class="step-place" id="stepPlace"></p>
+            <p class="step-desc" id="stepDesc"></p>
+          </div>
+        </div>
+        <svg class="step-stamp">
+          <use href="#sunflower-icon" />
+        </svg>
+      </div>
+      <button class="btn-gold" id="btnNextStep"></button>
+      <div class="step-dots" id="stepDots"></div>
+    </section>
+
+    <section id="screen-summary" class="screen">
+      <div class="summary-card" id="summaryCard">
+        <svg class="summary-flower-corner">
+          <use href="#sunflower-icon" />
+        </svg>
+        <span class="ribbon" id="summaryRibbon"></span>
+        <h2 class="summary-title" id="summaryTitle"></h2>
+        <p class="summary-subtitle" id="summarySubtitle"></p>
+        <div class="divider-flower">— ❀ —</div>
+        <ol class="timeline" id="timelineList"></ol>
+        <p class="summary-datetime" id="summaryDatetime"></p>
+        <div class="note-box">
+          <p class="note-label">📎 Catatan kecil</p>
+          <p class="note-text" id="noteText"></p>
+          <p class="note-sign" id="noteSign"></p>
+        </div>
+        <div class="tags-row" id="tagsRow"></div>
+      </div>
+      <p class="cta-line" id="ctaLine"></p>
+      <button class="btn-gold" id="btnSetuju">Aku ikut</button>
+      <button class="btn-outline" id="btnSave">🖼️ Simpan kartu ke galeri</button>
+      <button class="btn-link" id="btnReset">Ulangi dari awal</button>
+      <p class="save-note">Gambar yang disimpan hanya kartu ringkasan di atas.</p>
+    </section>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/MotionPathPlugin.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
